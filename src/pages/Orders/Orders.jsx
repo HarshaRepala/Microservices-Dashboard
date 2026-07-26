@@ -5,9 +5,13 @@ import PageHeader from "../../components/ui/PageHeader";
 import Card from "../../components/ui/Card";
 
 import { getOrders } from "../../services/orderService";
+import { getProducts } from "../../services/inventoryService";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadOrders();
@@ -15,62 +19,117 @@ export default function Orders() {
 
   async function loadOrders() {
     try {
-      const data = await getOrders();
-      setOrders(data);
-    } catch (err) {
-      console.error(err);
+      setLoading(true);
+
+      const [orderData, productData] =
+        await Promise.all([
+          getOrders(),
+          getProducts(),
+        ]);
+
+      setOrders(orderData);
+      setProducts(productData);
+
+    } catch (error) {
+      console.error(error);
       toast.error("Failed to load orders.");
+    } finally {
+      setLoading(false);
     }
   }
+
+
+  function getProductName(productId) {
+    const product = products.find(
+      (p) => p.productId === productId
+    );
+
+    return product
+      ? product.name
+      : `Product #${productId}`;
+  }
+
 
   return (
     <>
       <PageHeader
         title="Orders"
-        subtitle="Your shopping history"
+        subtitle="Your purchase history"
       />
 
-      <div className="space-y-5">
-        {orders.map((order) => (
-          <Card key={order.id}>
-            <div className="flex justify-between items-center">
 
-              <div>
+      {loading ? (
+        <p className="text-slate-400">
+          Loading orders...
+        </p>
+      ) : orders.length === 0 ? (
 
-                <h2 className="font-bold">
-                  Order #{order.id}
-                </h2>
+        <p className="text-slate-400">
+          No orders yet.
+        </p>
 
-                <p className="text-slate-400">
-                  Product ID: {order.productId}
-                </p>
+      ) : (
 
-                <p className="text-slate-400">
-                  Quantity: {order.quantity}
-                </p>
+        <div className="space-y-5">
+
+          {orders.map((order) => (
+
+            <Card key={order.id}>
+
+              <div className="flex justify-between">
+
+                <div>
+
+                  <h2 className="text-xl font-bold">
+                    📦 {getProductName(order.productId)}
+                  </h2>
+
+
+                  <p className="text-slate-400 mt-2">
+                    Order ID: {order.id}
+                  </p>
+
+
+                  <p className="text-slate-400">
+                    Quantity: {order.quantity}
+                  </p>
+
+                </div>
+
+
+                <div className="text-right">
+
+                  <span className="
+                    inline-block
+                    rounded-full
+                    px-3
+                    py-1
+                    text-sm
+                    bg-green-500/20
+                    text-green-400
+                  ">
+                    {order.status}
+                  </span>
+
+
+                  <p className="text-slate-500 text-sm mt-3">
+                    {new Date(
+                      order.createdAt
+                    ).toLocaleString()}
+                  </p>
+
+                </div>
 
               </div>
 
-              <div className="text-right">
+            </Card>
 
-                <p className="text-green-400">
+          ))}
 
-                  {order.status}
+        </div>
 
-                </p>
+      )}
 
-                <p className="text-slate-500 text-sm">
-
-                  {new Date(order.createdAt).toLocaleString()}
-
-                </p>
-
-              </div>
-
-            </div>
-          </Card>
-        ))}
-      </div>
     </>
   );
 }
