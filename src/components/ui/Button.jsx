@@ -1,24 +1,27 @@
 export default function Button({
   children,
-  onClick,
   type = "button",
+  onClick,
+  disabled = false,
   className = "",
 }) {
   return (
     <button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       className={`
+        w-full
         rounded-xl
         bg-indigo-600
-        hover:bg-indigo-500
-        transition-all
-        duration-300
-        px-5
         py-3
         font-semibold
-        shadow-lg
-        hover:shadow-indigo-500/30
+        transition-all
+        duration-300
+        hover:bg-indigo-500
+        hover:scale-[1.02]
+        disabled:opacity-50
+        disabled:cursor-not-allowed
         ${className}
       `}
     >
