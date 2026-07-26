@@ -1,3 +1,3 @@
 export default function Register() {
-  return <h1 className="text-3xl font-bold">Register</h1>;
+  return <h1 className="text-4xl">Register</h1>;
 }

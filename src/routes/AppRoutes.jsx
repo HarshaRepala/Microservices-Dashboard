@@ -11,52 +11,22 @@ import Orders from "../pages/Orders/Orders";
 import Profile from "../pages/Profile/Profile";
 
 export default function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-    return (
+        <Route element={<MainLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
 
-        <BrowserRouter>
-
-            <Routes>
-
-                <Route path="/" element={<Landing />} />
-
-                <Route path="/login" element={<Login />} />
-
-                <Route path="/register" element={<Register />} />
-
-                <Route element={<MainLayout />}>
-
-                    <Route
-                        path="/dashboard"
-                        element={<Dashboard />}
-                    />
-
-                    <Route
-                        path="/products"
-                        element={<Products />}
-                    />
-
-                    <Route
-                        path="/orders"
-                        element={<Orders />}
-                    />
-
-                    <Route
-                        path="/profile"
-                        element={<Profile />}
-                    />
-
-                </Route>
-
-                <Route
-                    path="*"
-                    element={<Navigate to="/" />}
-                />
-
-            </Routes>
-
-        </BrowserRouter>
-
-    );
-
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
