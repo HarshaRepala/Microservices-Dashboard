@@ -6,18 +6,6 @@ import "./index.css";
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 
-const redirect = sessionStorage.redirect;
-
-if (redirect) {
-  sessionStorage.removeItem("redirect");
-
-  window.history.replaceState(
-    null,
-    "",
-    "/Microservices-Dashboard" + redirect
-  );
-}
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
