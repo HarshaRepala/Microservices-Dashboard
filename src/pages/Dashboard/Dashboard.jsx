@@ -1,65 +1,109 @@
-import Card from "../../components/ui/Card";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
+import {
+  Package,
+  ShoppingCart,
+  Boxes,
+} from "lucide-react";
+
 import PageHeader from "../../components/ui/PageHeader";
+import StatCard from "../../components/dashboard/StatCard";
+import Card from "../../components/ui/Card";
+
+import { getProducts } from "../../services/inventoryService";
+import { getOrders } from "../../services/orderService";
 
 export default function Dashboard() {
+  const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    loadDashboard();
+  }, []);
+
+  async function loadDashboard() {
+    try {
+      const [productData, orderData] =
+        await Promise.all([
+          getProducts(),
+          getOrders(),
+        ]);
+
+      setProducts(productData);
+      setOrders(orderData);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to load dashboard.");
+    }
+  }
+
+  const totalProducts = products.length;
+
+  const totalOrders = orders.length;
+
+  const totalStock = products.reduce(
+    (sum, p) => sum + p.availableQuantity,
+    0
+  );
+
   return (
     <>
       <PageHeader
         title="Dashboard"
-        subtitle="Overview of your shopping platform."
+        subtitle="Overview of your system"
       />
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid gap-6 md:grid-cols-3">
 
-        <Card>
+        <StatCard
+          title="Products"
+          value={totalProducts}
+          icon={<Package size={42} />}
+        />
 
-          <h2 className="text-slate-400">
+        <StatCard
+          title="Orders"
+          value={totalOrders}
+          icon={<ShoppingCart size={42} />}
+        />
 
-            Products
-
-          </h2>
-
-          <h1 className="text-4xl font-bold mt-3">
-
-            0
-
-          </h1>
-
-        </Card>
-
-        <Card>
-
-          <h2 className="text-slate-400">
-
-            Orders
-
-          </h2>
-
-          <h1 className="text-4xl font-bold mt-3">
-
-            0
-
-          </h1>
-
-        </Card>
-
-        <Card>
-
-          <h2 className="text-slate-400">
-
-            Users
-
-          </h2>
-
-          <h1 className="text-4xl font-bold mt-3">
-
-            1
-
-          </h1>
-
-        </Card>
+        <StatCard
+          title="Available Stock"
+          value={totalStock}
+          icon={<Boxes size={42} />}
+        />
 
       </div>
+
+      <Card className="mt-8">
+
+        <h2 className="text-xl font-bold mb-5">
+          Recent Products
+        </h2>
+
+        <div className="space-y-4">
+
+          {products.slice(0, 5).map((product) => (
+
+            <div
+              key={product.productId}
+              className="flex justify-between border-b border-slate-800 pb-3"
+            >
+
+              <span>{product.name}</span>
+
+              <span className="text-slate-400">
+                Stock {product.availableQuantity}
+              </span>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </Card>
     </>
   );
 }
