@@ -10,6 +10,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Products from "../pages/Products/Products";
 import Orders from "../pages/Orders/Orders";
 import Profile from "../pages/Profile/Profile";
+import NotFound from "../pages/NotFound/NotFound";
 
 export default function AppRoutes() {
   return (
@@ -57,7 +58,7 @@ export default function AppRoutes() {
           />
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
