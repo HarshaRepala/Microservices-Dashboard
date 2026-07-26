@@ -54,6 +54,22 @@ export default function Dashboard() {
         subtitle="Overview of your system"
       />
 
+      <Card className="mb-8 bg-gradient-to-r from-indigo-700/30 to-slate-900">
+
+        <h1 className="text-3xl font-bold">
+
+          Welcome Back 👋
+
+        </h1>
+
+        <p className="text-slate-300 mt-2">
+
+          Your inventory and orders are updating live from the backend.
+
+        </p>
+
+      </Card>
+
       <div className="grid gap-6 md:grid-cols-3">
 
         <StatCard
