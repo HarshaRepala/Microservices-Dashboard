@@ -1,10 +1,5 @@
-import { NavLink } from "react-router-dom";
-import {
-    LayoutDashboard,
-    ShoppingCart,
-    Package,
-    User
-} from "lucide-react";
+import {NavLink} from "react-router-dom";
+import {LayoutDashboard, Package, ShoppingCart, User} from "lucide-react";
 
 const menu = [
     {
@@ -48,7 +43,7 @@ export default function Sidebar() {
                         <NavLink
                             key={item.path}
                             to={item.path}
-                            className={({ isActive }) =>
+                            className={({isActive}) =>
                                 `flex items-center gap-3 px-4 py-3 rounded-xl transition
                                 ${
                                     isActive
@@ -58,7 +53,7 @@ export default function Sidebar() {
                             }
                         >
 
-                            <Icon size={20} />
+                            <Icon size={20}/>
 
                             {item.name}
 

@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
 import ProtectedRoute from "../components/common/ProtectedRoute";
@@ -13,53 +13,53 @@ import Profile from "../pages/Profile/Profile";
 import NotFound from "../pages/NotFound/NotFound";
 
 export default function AppRoutes() {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+    return (
+        <HashRouter>
+            <Routes>
+                <Route path="/" element={<Landing/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/register" element={<Register/>}/>
 
-        <Route element={<MainLayout />}>
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+                <Route element={<MainLayout/>}>
+                    <Route
+                        path="/dashboard"
+                        element={
+                            <ProtectedRoute>
+                                <Dashboard/>
+                            </ProtectedRoute>
+                        }
+                    />
 
-          <Route
-            path="/products"
-            element={
-              <ProtectedRoute>
-                <Products />
-              </ProtectedRoute>
-            }
-          />
+                    <Route
+                        path="/products"
+                        element={
+                            <ProtectedRoute>
+                                <Products/>
+                            </ProtectedRoute>
+                        }
+                    />
 
-          <Route
-            path="/orders"
-            element={
-              <ProtectedRoute>
-                <Orders />
-              </ProtectedRoute>
-            }
-          />
+                    <Route
+                        path="/orders"
+                        element={
+                            <ProtectedRoute>
+                                <Orders/>
+                            </ProtectedRoute>
+                        }
+                    />
 
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-        </Route>
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRoute>
+                                <Profile/>
+                            </ProtectedRoute>
+                        }
+                    />
+                </Route>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </HashRouter>
-  );
+                <Route path="*" element={<NotFound/>}/>
+            </Routes>
+        </HashRouter>
+    );
 }

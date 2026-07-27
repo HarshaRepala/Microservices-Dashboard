@@ -1,16 +1,16 @@
 export default function Button({
-  children,
-  type = "button",
-  onClick,
-  disabled = false,
-  className = "",
-}) {
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`
+                                   children,
+                                   type = "button",
+                                   onClick,
+                                   disabled = false,
+                                   className = "",
+                               }) {
+    return (
+        <button
+            type={type}
+            onClick={onClick}
+            disabled={disabled}
+            className={`
         w-full
         rounded-xl
         bg-indigo-600
@@ -24,8 +24,8 @@ export default function Button({
         disabled:cursor-not-allowed
         ${className}
       `}
-    >
-      {children}
-    </button>
-  );
+        >
+            {children}
+        </button>
+    );
 }

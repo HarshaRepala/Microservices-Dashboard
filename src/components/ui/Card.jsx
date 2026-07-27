@@ -1,7 +1,7 @@
-export default function Card({ children, className = "" }) {
-  return (
-    <div
-      className={`
+export default function Card({children, className = ""}) {
+    return (
+        <div
+            className={`
         rounded-2xl
         border
         border-slate-800
@@ -11,8 +11,8 @@ export default function Card({ children, className = "" }) {
         shadow-xl
         ${className}
       `}
-    >
-      {children}
-    </div>
-  );
+        >
+            {children}
+        </div>
+    );
 }

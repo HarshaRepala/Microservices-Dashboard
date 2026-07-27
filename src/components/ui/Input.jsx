@@ -1,20 +1,20 @@
 export default function Input({
-  label,
-  type = "text",
-  value,
-  onChange,
-  placeholder,
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm text-slate-300">{label}</label>
+                                  label,
+                                  type = "text",
+                                  value,
+                                  onChange,
+                                  placeholder,
+                              }) {
+    return (
+        <div className="flex flex-col gap-2">
+            <label className="text-sm text-slate-300">{label}</label>
 
-      <input
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        className="
+            <input
+                type={type}
+                value={value}
+                placeholder={placeholder}
+                onChange={onChange}
+                className="
           w-full
           rounded-xl
           border
@@ -28,7 +28,7 @@ export default function Input({
           focus:ring-2
           focus:ring-indigo-500/30
         "
-      />
-    </div>
-  );
+            />
+        </div>
+    );
 }

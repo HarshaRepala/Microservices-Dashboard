@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
@@ -8,15 +8,15 @@ export default function MainLayout() {
 
         <div className="flex bg-[#050816] text-white">
 
-            <Sidebar />
+            <Sidebar/>
 
             <div className="flex-1">
 
-                <Navbar />
+                <Navbar/>
 
                 <main className="p-8">
 
-                    <Outlet />
+                    <Outlet/>
 
                 </main>
 
