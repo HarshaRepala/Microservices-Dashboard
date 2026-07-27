@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const tokenApi = axios.create({
-  baseURL: "http://mymicroservices.duckdns.org",
+  baseURL: "https://mymicroservices.duckdns.org",
 });
 
 export async function refreshToken(refreshToken) {

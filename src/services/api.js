@@ -10,7 +10,7 @@ import {
 import { refreshToken } from "./tokenService";
 
 const api = axios.create({
-  baseURL: "http://mymicroservices.duckdns.org",
+  baseURL: "https://mymicroservices.duckdns.org",
 });
 
 api.interceptors.request.use((config) => {
