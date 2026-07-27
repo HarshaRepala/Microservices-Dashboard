@@ -27,9 +27,11 @@ export default function Products() {
       const data = await getProducts();
 
       setProducts(data);
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to load products.");
+    } catch (err) {
+      console.error(err);
+      if (err.response?.status !== 401) {
+        toast.error("Failed to load products");
+      }
     } finally {
       setLoading(false);
     }
@@ -60,23 +62,23 @@ export default function Products() {
   return (
     <>
       <div className="mb-6 flex items-center justify-between">
-  <PageHeader
-    title="Products"
-    subtitle="Browse available inventory"
-  />
+        <PageHeader
+          title="Products"
+          subtitle="Browse available inventory"
+        />
 
-  <button
-  onClick={loadProducts}
-  className="flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2 transition hover:bg-slate-800"
-  disabled={loading}
->
-  <RefreshCw
-    size={18}
-    className={loading ? "animate-spin" : ""}
-  />
-  {loading ? "Refreshing..." : "Refresh"}
-</button>
-</div>
+        <button
+          onClick={loadProducts}
+          className="flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2 transition hover:bg-slate-800"
+          disabled={loading}
+        >
+          <RefreshCw
+            size={18}
+            className={loading ? "animate-spin" : ""}
+          />
+          {loading ? "Refreshing..." : "Refresh"}
+        </button>
+      </div>
 
       {loading ? (
         <div className="text-center py-10 text-slate-400">

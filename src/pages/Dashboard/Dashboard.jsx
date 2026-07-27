@@ -34,7 +34,9 @@ export default function Dashboard() {
       setOrders(orderData);
     } catch (err) {
       console.error(err);
-      toast.error("Failed to load dashboard.");
+      if (err.response?.status !== 401) {
+        toast.error("Failed to load dashboard.");
+      }
     }
   }
 

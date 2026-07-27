@@ -30,9 +30,11 @@ export default function Orders() {
       setOrders(orderData);
       setProducts(productData);
 
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to load orders.");
+    } catch (err) {
+      console.error(err);
+      if (err.response?.status !== 401) {
+        toast.error("Failed to load orders.");
+      }
     } finally {
       setLoading(false);
     }
