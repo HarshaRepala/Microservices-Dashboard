@@ -42,9 +42,9 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-[#050816] flex items-center justify-center p-6">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-xl">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-4xl font-bold whitespace-nowrap">
             🚀 Microservices Dashboard
           </h1>
 
