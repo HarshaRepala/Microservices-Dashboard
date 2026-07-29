@@ -78,7 +78,7 @@ export default function Orders() {
 
             <Card key={order.id}>
 
-              <div className="flex justify-between">
+              <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
 
                 <div>
 
@@ -99,7 +99,7 @@ export default function Orders() {
                 </div>
 
 
-                <div className="text-right">
+                <div className="sm:text-right">
 
                   <span className="
                     inline-block

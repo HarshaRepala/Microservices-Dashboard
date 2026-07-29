@@ -15,6 +15,7 @@ body {
     font-family: Inter, system-ui, sans-serif;
     background: radial-gradient(circle at top, #172554, #050816 60%);
     color: white;
+    overflow-x: hidden;
 }
 
 * {

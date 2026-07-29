@@ -29,9 +29,9 @@ export default function BuyDialog({
     }
 
     return (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
             <Card className="w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="mb-2 text-2xl font-bold">
                     🛒 Purchase Product
                 </h2>
 
@@ -39,12 +39,11 @@ export default function BuyDialog({
                     {product.name}
                 </p>
 
-                <p className="text-slate-400 mb-6">
+                <p className="mb-6 text-slate-400">
                     Available Stock: {product.availableQuantity}
                 </p>
 
-                <div className="flex justify-center items-center gap-5 mb-8">
-
+                <div className="mb-8 flex items-center justify-center gap-5">
                     <Button
                         className="w-14"
                         onClick={decrease}
@@ -53,8 +52,8 @@ export default function BuyDialog({
                     </Button>
 
                     <span className="text-3xl font-bold">
-            {quantity}
-          </span>
+                        {quantity}
+                    </span>
 
                     <Button
                         className="w-14"
@@ -62,11 +61,9 @@ export default function BuyDialog({
                     >
                         +
                     </Button>
-
                 </div>
 
-                <div className="flex gap-4">
-
+                <div className="flex flex-col gap-3 sm:flex-row">
                     <Button
                         className="bg-slate-700 hover:bg-slate-600"
                         onClick={onClose}
@@ -75,15 +72,11 @@ export default function BuyDialog({
                     </Button>
 
                     <Button
-                        onClick={() =>
-                            onConfirm(product.productId, quantity)
-                        }
+                        onClick={() => onConfirm(product.productId, quantity)}
                     >
                         Buy Now
                     </Button>
-
                 </div>
-
             </Card>
         </div>
     );

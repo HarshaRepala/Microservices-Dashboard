@@ -44,10 +44,10 @@ export default function Register() {
     }
 
     return (
-        <div className="min-h-screen bg-[#050816] flex items-center justify-center p-6">
+        <div className="flex min-h-screen items-center justify-center bg-[#050816] p-4 sm:p-6">
             <Card className="w-full max-w-md">
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold">
+                    <h1 className="text-3xl font-bold sm:text-4xl">
                         🚀 Create Account
                     </h1>
 

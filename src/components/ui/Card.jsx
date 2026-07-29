@@ -6,9 +6,10 @@ export default function Card({children, className = ""}) {
         border
         border-slate-800
         bg-slate-900/70
-        backdrop-blur-lg
-        p-6
+        p-4
         shadow-xl
+        backdrop-blur-lg
+        sm:p-6
         ${className}
       `}
         >

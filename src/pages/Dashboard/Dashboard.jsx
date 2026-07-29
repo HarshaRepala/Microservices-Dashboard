@@ -58,13 +58,13 @@ export default function Dashboard() {
 
       <Card className="mb-8 bg-gradient-to-r from-indigo-700/30 to-slate-900">
 
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-2xl font-bold sm:text-3xl">
 
           Welcome Back 👋
 
         </h1>
 
-        <p className="text-slate-300 mt-2">
+        <p className="mt-2 text-sm text-slate-300 sm:text-base">
 
           Your inventory and orders are updating live from the backend.
 
@@ -72,7 +72,7 @@ export default function Dashboard() {
 
       </Card>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
 
         <StatCard
           title="Products"
@@ -106,12 +106,12 @@ export default function Dashboard() {
 
             <div
               key={product.productId}
-              className="flex justify-between border-b border-slate-800 pb-3"
+              className="flex flex-col gap-2 border-b border-slate-800 pb-3 sm:flex-row sm:items-center sm:justify-between"
             >
 
               <span>{product.name}</span>
 
-              <span className="text-slate-400">
+              <span className="text-sm text-slate-400 sm:text-base">
                 Stock {product.availableQuantity}
               </span>
 

@@ -6,18 +6,18 @@ export default function StatCard({
                                      icon,
                                  }) {
     return (
-        <Card className="flex items-center justify-between">
+        <Card className="flex items-center justify-between gap-3">
             <div>
-                <p className="text-slate-400 text-sm">
+                <p className="text-sm text-slate-400">
                     {title}
                 </p>
 
-                <h2 className="text-3xl font-bold mt-2">
+                <h2 className="mt-2 text-2xl font-bold sm:text-3xl">
                     {value}
                 </h2>
             </div>
 
-            <div className="text-5xl">
+            <div className="text-4xl sm:text-5xl">
                 {icon}
             </div>
         </Card>
