@@ -20,7 +20,7 @@ async function performHealthCheck(timeout) {
 }
 
 export async function checkBackendHealth() {
-    const timeouts = [30000, 10000];
+    const timeouts = [25000, 10000];
 
     for (let i = 0; i < timeouts.length; i++) {
         try {
