@@ -4,17 +4,28 @@ import { useHealth } from "./context/HealthContext";
 
 export default function App() {
 
-    const { loading, backendAvailable } = useHealth();
+    const { loading, backendAvailable, progress } = useHealth();
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
-                <div className="text-center">
-                    <div className="h-12 w-12 mx-auto animate-spin rounded-full border-4 border-gray-300 border-t-blue-600"></div>
+            <div className="flex min-h-screen items-center justify-center bg-gray-100 px-6">
+                <div className="w-full max-w-md text-center">
 
-                    <p className="mt-5 text-gray-600">
-                        Checking application status...
+                    <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                        Checking application availability...
+                    </h2>
+
+                    <div className="h-3 overflow-hidden rounded-full bg-gray-200">
+                        <div
+                            className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-100"
+                            style={{ width: `${progress}%` }}
+                        />
+                    </div>
+
+                    <p className="mt-6 text-gray-600">
+                        Please wait while we connect to the application.
                     </p>
+
                 </div>
             </div>
         );
