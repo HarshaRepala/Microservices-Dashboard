@@ -13,7 +13,7 @@ export function HealthProvider({ children }) {
 
         async function checkHealth() {
 
-            const totalDuration = 40000;
+            const totalDuration = 36000;
             const interval = 100;
 
             const startTime = Date.now();
